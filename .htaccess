@@ -1,0 +1,6 @@
+Options -Indexes
+
+# Never serve configuration, scripts or documentation over HTTP
+<FilesMatch "^(\.env.*|config\.php|Dockerfile|docker-compose\.yml|.*\.md|.*\.sql|.*\.sh|.*\.ini|.*\.conf)$">
+    Require all denied
+</FilesMatch>

@@ -1,0 +1,50 @@
+# Start with:  docker compose up -d --build
+# Settings come from the .env file in this folder (copy .env.example first).
+services:
+  db:
+    image: mariadb:10.11
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?set DB_ROOT_PASSWORD in .env}
+      SIS_ADMIN_PASSWORD: ${SIS_ADMIN_PASSWORD:?set SIS_ADMIN_PASSWORD in .env}
+      SIS_LECTURER_PASSWORD: ${SIS_LECTURER_PASSWORD:?set SIS_LECTURER_PASSWORD in .env}
+      LOAD_SAMPLE_DATA: ${LOAD_SAMPLE_DATA:-1}
+      TZ: Africa/Nairobi
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./sql:/sql:ro
+      - ./docker/db-init.sh:/docker-entrypoint-initdb.d/10-init.sh:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mariadb-admin ping -h 127.0.0.1 -uroot -p\"$$MARIADB_ROOT_PASSWORD\" --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 15s
+
+  web:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${WEB_PORT:-8080}:80"
+    environment:
+      APP_ENV: production
+      TRUST_PROXY: ${TRUST_PROXY:-0}
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: university_sis
+      DB_ADMIN_USER: sis_admin
+      DB_ADMIN_PASS: ${SIS_ADMIN_PASSWORD}
+      DB_LECTURER_USER: sis_lecturer
+      DB_LECTURER_PASS: ${SIS_LECTURER_PASSWORD}
+      BACKUP_DB_USER: root
+      BACKUP_DB_PASS: ${DB_ROOT_PASSWORD}
+      TZ: Africa/Nairobi
+    volumes:
+      - backups:/var/www/html/backups
+
+volumes:
+  dbdata:
+  backups:
