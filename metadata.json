@@ -1,0 +1,6 @@
+{
+  "name": "University Student Information Management System",
+  "description": "Relational database-driven University Student Information Management System featuring student, lecturer, course, semester, registration, examination, fee payment modules, stored procedures, triggers, views, indexing, RBAC security, and SQL backup and recovery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
