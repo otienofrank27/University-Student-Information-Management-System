@@ -45,7 +45,6 @@
 - [Usage Instructions](#usage-instructions)
 - [Security Awareness](#security-awareness)
 - [Frequently Asked Questions (FAQ)](#frequently-asked-questions-faq)
-- [Contributing Guidelines](#contributing-guidelines)
 - [Release Notes & Version History](#release-notes--version-history)
 - [License Information](#license-information)
 - [Credits and Acknowledgements](#credits-and-acknowledgements)
@@ -57,7 +56,7 @@
 
 The **University Students Information Management System (USIMS)** is a relational database-driven academic administration portal designed for managing core university registry operations from a single workspace.
 
-It unifies student admissions, faculty directories, academic programmes, semester scheduling, course enrollments, examination grading, Kenyan Shilling (`KSh`) tuition ledgers, system configuration, and live SQLite schema inspection/backup workflows—while keeping database integrity rules enforced directly at the database layer via foreign keys, `CHECK` constraints, triggers, and views.
+It unifies student admissions, faculty directories, academic programmes, semester scheduling, course enrollments, examination grading, tuition ledgers.
 
 ---
 
@@ -65,7 +64,7 @@ It unifies student admissions, faculty directories, academic programmes, semeste
 
 - **Shared Application Preview:** [Launch University Students Information Management System](https://ais-pre-nfxqndafvi2dwpvg6bfse6-251001881925.europe-west2.run.app)
 
-> **First-Time Access Note:** No dummy user accounts or mock student records are shipped in the database. On first launch, create an administrator profile directly on the **Create Account** tab to initialize access.
+> **First-Time Access Note:** No dummy user accounts or mock student records are shipped in the database.
 
 ---
 
@@ -212,17 +211,6 @@ SQLite triggers (<code>trg_exam_calc_insert</code> and <code>trg_exam_calc_updat
 Data is stored locally in SQLite (<code>data/university_student.db</code>) with WAL journaling enabled, and exported SQL snapshots can be generated or restored from <strong>Database &amp; SQL Lab</strong>.
 
 </details>
-
----
-
-## Contributing Guidelines
-
-Contributions that improve reliability, accessibility, documentation, or security are welcome:
-
-1. **Fork & Branch:** Create a focused feature or fix branch from `main` (for example, `feat/transcript-export` or `fix/registration-validation`).
-2. **Follow Code Standards:** Keep TypeScript strict, parameterize all SQL queries, preserve light/dark theme parity, and avoid committing generated artifacts or secrets.
-3. **Verify Locally:** Ensure both `npm run lint` and `npm run build` succeed cleanly without warnings or errors.
-4. **Open a Pull Request:** Describe the motivation, affected modules, and manual or automated verification steps clearly—without including any personal data or credentials.
 
 ---
 
