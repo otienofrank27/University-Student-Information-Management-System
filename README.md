@@ -93,15 +93,6 @@ It unifies student admissions, faculty directories, academic programmes, semeste
 
 ---
 
-## Visual Previews
-
-| Campus Login Experience | Registration Form Layout |
-| :---: | :---: |
-| <img src="./src/assets/images/african_campus_students_1795729406096.jpg" alt="Campus courtyard backdrop used on the authentication portal" width="420" /> | <img src="./public/assets/aistudio/image_84f44cfe.png" alt="Portal account registration UI preview" width="420" /> |
-| *Split-panel campus photography framing the authentication workspace* | *Registration form with real-time validation and password requirements* |
-
----
-
 ## Architecture Overview
 
 ```text
