@@ -62,7 +62,7 @@ It unifies student admissions, faculty directories, academic programmes, semeste
 
 ## Live Demo
 
-- **Shared Application Preview:** [Launch University Students Information Management System](https://ais-pre-nfxqndafvi2dwpvg6bfse6-251001881925.europe-west2.run.app)
+- **Shared Application Preview:** [Launch University Students Information Management System](https://university-student-information.onrender.com/)
 
 > **First-Time Access Note:** No dummy user accounts or mock student records are shipped in the database.
 
